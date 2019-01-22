@@ -46,6 +46,10 @@ def index():
     if session["board"][0][2] != None and session["board"][0][2] == session["board"][1][1] and session["board"][0][2] == session["board"][2][0]: 
         return render_template("game.html", winner=f"{session['board'][0][2]} wins!", 
                             game=session["board"], turn=session["turn"])
+
+    # Error check
+    for move in session["board"]:
+        print(*move)                        
  
     return render_template("game.html", game=session["board"], turn=session["turn"])
  
@@ -58,9 +62,9 @@ def play(row, col):
     # Add move to history
     session["history"] += [[session['turn'], row, col]]
     
-    # # Error check
-    # for move in session["history"]:
-    #     print(*move)
+    # Error check
+    for move in session["history"]:
+        print(*move)
 
     # Alternate turns
     if session["turn"] == "X":
@@ -73,7 +77,8 @@ def play(row, col):
 
 @app.route("/reset") 
 def reset():
-    session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
+    # session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
+    del session["board"]
     session["turn"] = "X"
     session["history"] = []
 
