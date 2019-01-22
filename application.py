@@ -58,9 +58,9 @@ def play(row, col):
     # Add move to history
     session["history"] += [[session['turn'], row, col]]
     
-    # Error check
-    for move in session["history"]:
-        print(*move)
+    # # Error check
+    # for move in session["history"]:
+    #     print(*move)
 
     # Alternate turns
     if session["turn"] == "X":
