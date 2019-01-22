@@ -78,7 +78,8 @@ def play(row, col):
 @app.route("/reset") 
 def reset():
     # session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
-    del session["board"]
+    if "board" in session:
+        del session["board"]
     session["turn"] = "X"
     session["history"] = []
 
