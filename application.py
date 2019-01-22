@@ -34,7 +34,7 @@ def index():
     # Check for column win
     for i in range(3):
         if len({session["board"][0][i], session["board"][1][i], session["board"][2][i]})==1 and session["board"][0][i] != None:
-            return render_template("game.html", winner=f"{session['board'][i][0]} won!", 
+            return render_template("game.html", winner=f"{session['board'][0][i]} won!", 
                             game=session["board"], turn=session["turn"])
 
     # Check for left diagonal win
